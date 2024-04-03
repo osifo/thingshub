@@ -41,6 +41,6 @@ class UserRepository(IUserRepository):
       raise UserInvalidError
     return user
   
-  def get_users(self, *filter_param: object) -> list[UserSchema]:
+  async def get_users(self, *filter_param: object) -> list[UserSchema]:
     users = self.database.query(UserModel).all()
     return users

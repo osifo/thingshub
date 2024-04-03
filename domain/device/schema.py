@@ -10,12 +10,13 @@ class DeviceCreate(DeviceBase):
   
 class Device(DeviceBase):
   id: int
-  last_location: geoalchemy2.elements.WKBElement
-  is_active: bool
-  owner_id: str
+  # last_location: geoalchemy2.elements.WKBElement
+  is_active: bool | None
+  owner_id: int
 
   class Config:
     from_attributes = True
+    arbitrary_types_allowed=True
 
 
 class DeviceListResponse(BaseModel):
