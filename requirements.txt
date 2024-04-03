@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+pymysql
+alembic
+sqlalchemy
+geoalchemy2
