@@ -4,3 +4,7 @@ pymysql
 alembic
 sqlalchemy
 geoalchemy2
+pydantic[email]
+bcrypt
+python-dotenv
+pydantic-settings

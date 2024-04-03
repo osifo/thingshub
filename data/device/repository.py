@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from fastapi import Depends;
-from domain.device.repository import DeviceRepository as IDeviceRepository
+from domain.device.repository import IDeviceRepository
 from domain.device import schema, model
-from database.config import get_database
+from config import get_database
 
 class DeviceRepository(IDeviceRepository):
   def __init__(self, database: Session = Depends(get_database)) -> None:

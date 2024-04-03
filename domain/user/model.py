@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.orm import relationship
-from ..base_model import BaseModel
+from domain.base import BaseModel
 
 class User(BaseModel):
   __tablename__ = "users"

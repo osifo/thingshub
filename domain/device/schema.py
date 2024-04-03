@@ -12,3 +12,6 @@ class Device(DeviceBase):
   is_active: bool
   owner_id: str
 
+  class Config:
+    from_attributes = True
+
