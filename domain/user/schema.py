@@ -11,7 +11,7 @@ class UserCreate(UserBase):
   password: str = Field(min_length=8, pattern='\d+\w+')
 
 class User(UserBase):
-  id: str
+  id: int
   is_active: bool | None
   devices: list[Device]
 

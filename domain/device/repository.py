@@ -5,11 +5,6 @@ from .schema import DeviceCreate, Device
 
 class IDeviceRepository(metaclass=ABCMeta): # or DeviceRepository(ABC)
   @abc.abstractmethod
-  def __init__(self, dbConnection: Session) -> None:
-    """ Creates a new device repository """
-    raise NotImplementedError
-
-  @abc.abstractmethod
   def create_device(self, device_params: DeviceCreate) -> Device:
     """Create a new device"""
     raise NotImplementedError
@@ -20,8 +15,8 @@ class IDeviceRepository(metaclass=ABCMeta): # or DeviceRepository(ABC)
     raise NotImplementedError
   
   @abc.abstractmethod
-  def list_devices(self, filter: dict) -> list[Device]:
-    """ returns a list of devices that matches teh filter """
+  def get_devices(self, filter_params: dict | None = None) -> list[Device]:
+    """ returns all devices that matches the filter params """
     raise NotImplementedError
   
   @abc.abstractmethod

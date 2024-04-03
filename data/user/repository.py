@@ -12,7 +12,7 @@ class UserRepository(IUserRepository):
   def __init__(self) -> None:
     self.database = next(get_database())
 
-  def create_user(self, user_params: UserCreateSchema) -> UserSchema:
+  async def create_user(self, user_params: UserCreateSchema) -> UserSchema:
     try:
       hashed_password = bcrypt.hashpw(user_params.password.encode('utf-8'), bcrypt.gensalt())
       new_user = UserModel(
@@ -28,15 +28,19 @@ class UserRepository(IUserRepository):
       self.database.commit()
       self.database.refresh(new_user)
       return new_user
+    
     except Exception as error:
       # handle logging here
       raise error
   
-  def show_user(self, user_id: str) -> UserSchema:
+  async def show_user(self, user_id: str) -> UserSchema:
     user = self.database.query(UserModel).get(user_id)
+    print(f"user ========== {user}")
+
     if not user:
       raise UserInvalidError
     return user
   
-  def get_users(*filter_param: object) -> list[UserSchema]:
-    pass
+  def get_users(self, *filter_param: object) -> list[UserSchema]:
+    users = self.database.query(UserModel).all()
+    return users

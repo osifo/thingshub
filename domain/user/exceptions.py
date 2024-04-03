@@ -9,17 +9,16 @@ class UserBaseError(Exception):
 
   def __str__(self) -> str:
     return json.dumps({
-      "success": False,
       "message": self.message,
       "code": self.code
       })
 
-class UserInvalidError(UserBaseError):
+class UserInvalidError(Exception):
   message = "The user parameters provided are invalid."
   code = status.HTTP_400_BAD_REQUEST
 
   def __str__(self):
-    return UserBaseError(
-      message = UserInvalidError.message,
-      code = UserInvalidError.code
-    )
+    return json.dumps({
+      "message": UserInvalidError.message,
+      "code": UserInvalidError.code
+    })

@@ -3,12 +3,7 @@ from abc import ABC
 from sqlalchemy.orm import Session
 from domain.user.schema import UserCreate, User
 
-class IUserRepository(ABC):
-  @abc.abstractmethod
-  def __init__(self, dbConnection: Session) -> None:
-    """ Creates a new user repository """
-    raise NotImplementedError
-  
+class IUserRepository(ABC):  
   @abc.abstractmethod
   def create_user(self, user_params: UserCreate) -> User:
     """ creates a user """
