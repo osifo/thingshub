@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pymysql
+alembic
+sqlalchemy
+geoalchemy2
+pydantic[email]
+bcrypt
+python-dotenv
+pydantic-settings
+geoalchemy2[shapely]
+pyright
+aiohttp
